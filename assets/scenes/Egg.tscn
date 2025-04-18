@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh862fcwomekk"]
+
+[ext_resource type="Texture2D" uid="uid://bepho4g61xivc" path="res://assets/art/placeholders/Untitled_design-removebg-preview.png" id="1_78oxr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s6s0r"]
+radius = 128.0
+height = 304.0
+
+[node name="Egg" type="Area2D"]
+position = Vector2(144, 160)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_78oxr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_s6s0r")

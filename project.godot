@@ -15,8 +15,12 @@ run/main_scene="uid://ddl368sfmifvu"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameState="*res://assets/scripts/GameState.gd"
+
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"

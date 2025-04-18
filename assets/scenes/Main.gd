@@ -20,7 +20,6 @@ var plot_panel
 func _ready():
 	randomize()  # initialize RNG
 	btn.connect("pressed", Callable(self, "_on_ok"))
-	label.text = "Hi Chief! Name your village:"
 	input.visible = true
 	plot_panel = plot_panel_scene.instantiate()
 	$UI.add_child(plot_panel)

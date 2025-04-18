@@ -12,7 +12,6 @@ func _ready():
 	# connect the pressed signal
 	btn.connect("pressed", Callable(self, "_on_ok"))
 	# initialize your prompt
-	label.text = "Hi Chief! Name your village:"
 	input.visible = true
 
 func _on_ok():

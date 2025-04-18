@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0fvsix37pfps"]
+
+[ext_resource type="Texture2D" uid="uid://bo8omeirysftt" path="res://assets/art/placeholders/Untitled_design-removebg-preview (2).png" id="1_5uoda"]
+[ext_resource type="Script" uid="uid://cyutger3o8cnt" path="res://fishing.gd" id="1_hjnv8"]
+[ext_resource type="Texture2D" uid="uid://ntafgyn84ekx" path="res://assets/art/placeholders/ChatGPT_Image_Apr_17__2025__05_46_28_PM-removebg-preview.png" id="2_hjnv8"]
+[ext_resource type="Texture2D" uid="uid://d8cypenrecic" path="res://assets/art/placeholders/fishbutton.png" id="4_moqas"]
+
+[node name="Fishing" type="Node2D"]
+script = ExtResource("1_hjnv8")
+
+[node name="Pond" type="Sprite2D" parent="."]
+position = Vector2(380, 490)
+scale = Vector2(1.748, 1.446)
+texture = ExtResource("1_5uoda")
+
+[node name="Penguin" type="Sprite2D" parent="."]
+position = Vector2(854, 380)
+scale = Vector2(0.656863, 0.715686)
+texture = ExtResource("2_hjnv8")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PowerMeter" type="ProgressBar" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -536.5
+offset_top = -74.0
+offset_right = 536.5
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="FishCounter" type="Label" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -55.5
+offset_right = 55.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FishButton" type="TextureButton" parent="UI"]
+offset_left = 980.0
+offset_top = 347.0
+offset_right = 2004.0
+offset_bottom = 1371.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("4_moqas")
+texture_pressed = ExtResource("4_moqas")
+texture_hover = ExtResource("4_moqas")
+
+[node name="FeedbackLabel" type="Label" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = -168.0
+offset_right = -99.0
+offset_bottom = -145.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnergyLabel" type="Label" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -367.0
+offset_top = 8.0
+offset_right = -31.0
+offset_bottom = 75.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 48
+text = "Energy: 9 / 10"
+
+[node name="EnergyTimerLabel" type="Label" parent="UI"]
+offset_left = 955.0
+offset_top = 83.0
+offset_right = 1220.0
+offset_bottom = 132.0
+theme_override_font_sizes/font_size = 24
+text = "Next Energy In: 60s"
+horizontal_alignment = 2
+
+[node name="EnergyRegenTimer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
+[node name="CountdownTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="pressed" from="UI/FishButton" to="." method="_on_fish_button_pressed"]
+[connection signal="timeout" from="EnergyRegenTimer" to="." method="_on_energy_regen_timer_timeout"]
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]

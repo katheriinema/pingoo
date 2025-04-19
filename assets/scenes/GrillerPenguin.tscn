@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1c46lfba8wt8"]
+
+[ext_resource type="Texture2D" uid="uid://ntafgyn84ekx" path="res://assets/art/placeholders/ChatGPT_Image_Apr_17__2025__05_46_28_PM-removebg-preview.png" id="1_4dmyy"]
+
+[node name="GrillerPenguin" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_4dmyy")

@@ -1,0 +1,108 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsd0b28onfchl"]
+
+[ext_resource type="Script" uid="uid://dgbt0i6th1pak" path="res://assets/scenes/PlotPanel.gd" id="1_wt4pj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wt4pj"]
+bg_color = Color(0.633787, 0.851093, 0.985798, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.578156, 0.829034, 0.98236, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrw7s"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgqk2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="PlotPanel" type="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -325.0
+offset_right = 225.0
+offset_bottom = 325.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_wt4pj")
+script = ExtResource("1_wt4pj")
+
+[node name="NameInput" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 60.0
+grow_horizontal = 2
+focus_mode = 1
+theme_override_styles/focus = SubResource("StyleBoxFlat_vrw7s")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mgqk2")
+alignment = 1
+expand_to_text_length = true
+
+[node name="PlotImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.388
+anchor_right = 0.5
+anchor_bottom = 0.4
+offset_left = -150.0
+offset_top = -158.75
+offset_right = 150.0
+offset_bottom = 158.75
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -53.0
+offset_right = 92.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+
+[node name="SkillIcon" type="TextureRect" parent="."]
+z_index = 5
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 70.0
+offset_top = 60.0
+offset_right = 110.0
+offset_bottom = 100.0
+grow_vertical = 2
+expand_mode = 3
+stretch_mode = 5

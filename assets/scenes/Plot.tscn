@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://btxpxukho8u7j"]
+
+[ext_resource type="Texture2D" uid="uid://cp8wumq6vpla5" path="res://assets/art/placeholders/Untitled_design-removebg-preview (1).png" id="1_1wxft"]
+[ext_resource type="Script" uid="uid://cwalsg0fw43bb" path="res://assets/scenes/Plot.gd" id="1_5txkn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5txkn"]
+radius = 96.0
+height = 426.95
+
+[node name="Plot" type="Node2D"]
+script = ExtResource("1_5txkn")
+
+[node name="LandSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_1wxft")
+
+[node name="EggSpawnPoint" type="Marker2D" parent="."]
+z_index = 1
+position = Vector2(0, -20)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8, 0)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_5txkn")

@@ -37,7 +37,7 @@ offset_right = 345.0
 offset_bottom = 38.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 18
-text = "Hi! Welcome to Anartica.  what do you wna name your village?"
+text = "Hi Chief! Name your village:"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -71,3 +71,18 @@ offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "OK!"
+
+[node name="PlotSpawns" type="Node2D" parent="."]
+
+[node name="SpawnPoint0" type="Marker2D" parent="PlotSpawns"]
+z_index = 3
+position = Vector2(640, 360)
+
+[node name="SpawnPoint1" type="Marker2D" parent="PlotSpawns"]
+position = Vector2(256, 416)
+
+[node name="SpawnPoint2" type="Marker2D" parent="PlotSpawns"]
+position = Vector2(648, 616)
+
+[node name="SpawnPoint3" type="Marker2D" parent="PlotSpawns"]
+position = Vector2(1016, 416)

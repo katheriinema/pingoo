@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://d0fvsix37pfps"]
 
 [ext_resource type="Texture2D" uid="uid://bo8omeirysftt" path="res://assets/art/placeholders/Untitled_design-removebg-preview (2).png" id="1_5uoda"]
-[ext_resource type="Script" uid="uid://cyutger3o8cnt" path="res://fishing.gd" id="1_hjnv8"]
-[ext_resource type="Texture2D" uid="uid://ntafgyn84ekx" path="res://assets/art/placeholders/ChatGPT_Image_Apr_17__2025__05_46_28_PM-removebg-preview.png" id="2_hjnv8"]
+[ext_resource type="Script" path="res://assets/scenes/fishing.gd" id="1_hjnv8"]
+[ext_resource type="Texture2D" uid="uid://ntafgyn84ekx" path="res://assets/art/placeholders/penguin.png" id="2_hjnv8"]
 [ext_resource type="Texture2D" uid="uid://d8cypenrecic" path="res://assets/art/placeholders/fishbutton.png" id="4_moqas"]
 
 [sub_resource type="FontFile" id="FontFile_moqas"]

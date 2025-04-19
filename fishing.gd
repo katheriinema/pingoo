@@ -112,7 +112,10 @@ func _on_countdown_timer_timeout() -> void:
 
 func update_timer_label():
 	energy_timer_label.text = "Next Energy In: %ds" % seconds_until_next_energy
-
+	
+func _on_exit_button_pressed():
+	get_tree().change_scene_to_file("res://assets/scenes/Main.tscn")
+	
 func _ready():
 	update_energy_display()
 	update_timer_label()

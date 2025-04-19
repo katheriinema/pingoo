@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0fvsix37pfps"]
+[gd_scene load_steps=6 format=3 uid="uid://crxd8w4kxufso"]
 
 [ext_resource type="Texture2D" uid="uid://bo8omeirysftt" path="res://assets/art/placeholders/Untitled_design-removebg-preview (2).png" id="1_5uoda"]
 [ext_resource type="Script" uid="uid://cyutger3o8cnt" path="res://fishing.gd" id="1_hjnv8"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://d8cypenrecic" path="res://assets/art/placeholders/fishbutton.png" id="4_moqas"]
 
 [sub_resource type="FontFile" id="FontFile_moqas"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -44,9 +47,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -536.5
-offset_top = -74.0
+offset_top = -79.0
 offset_right = 536.5
-offset_bottom = -29.0
+offset_bottom = -34.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -56,7 +59,7 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -55.5
 offset_right = 55.5
-offset_bottom = 23.0
+offset_bottom = 88.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 64
 text = "0"
@@ -79,10 +82,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -179.0
-offset_right = 87.0
-offset_bottom = -122.0
+offset_left = 8.0
+offset_top = -160.0
+offset_right = 105.0
+offset_bottom = -103.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = SubResource("FontFile_moqas")
@@ -94,22 +97,32 @@ vertical_alignment = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -367.0
-offset_top = 8.0
-offset_right = -31.0
-offset_bottom = 75.0
+offset_left = -336.0
+offset_bottom = 67.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 48
 text = "Energy: 9 / 10"
 
 [node name="EnergyTimerLabel" type="Label" parent="UI"]
-offset_left = 955.0
-offset_top = 83.0
-offset_right = 1220.0
-offset_bottom = 132.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -296.0
+offset_top = 72.0
+offset_right = -31.0
+offset_bottom = 121.0
+grow_horizontal = 0
 theme_override_font_sizes/font_size = 24
 text = "Next Energy In: 60s"
 horizontal_alignment = 2
+
+[node name="ExitButton" type="Button" parent="UI"]
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 248.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 24
+text = "Done Fishing 🎣"
 
 [node name="EnergyRegenTimer" type="Timer" parent="."]
 wait_time = 60.0
@@ -119,5 +132,6 @@ autostart = true
 autostart = true
 
 [connection signal="pressed" from="UI/FishButton" to="." method="_on_fish_button_pressed"]
+[connection signal="pressed" from="UI/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="timeout" from="EnergyRegenTimer" to="." method="_on_energy_regen_timer_timeout"]
 [connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]

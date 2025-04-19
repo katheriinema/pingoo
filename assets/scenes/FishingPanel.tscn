@@ -1,0 +1,143 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwn177wc6xxig"]
+
+[ext_resource type="Script" uid="uid://dy3wkhkwt0b88" path="res://assets/scenes/FishingPanel.gd" id="1_4s0h7"]
+[ext_resource type="Script" uid="uid://bcmvofyxumnh6" path="res://assets/scenes/FishingGame.gd" id="1_rxhto"]
+[ext_resource type="Texture2D" uid="uid://d8cypenrecic" path="res://assets/art/placeholders/fishbutton.png" id="2_4s0h7"]
+
+[sub_resource type="FontFile" id="FontFile_gphwd"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+cache/0/30/0/ascent = 0.0
+cache/0/30/0/descent = 0.0
+cache/0/30/0/underline_position = 0.0
+cache/0/30/0/underline_thickness = 0.0
+cache/0/30/0/scale = 1.0
+
+[node name="FishingPanel" type="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4s0h7")
+
+[node name="FishingGame" type="Node2D" parent="."]
+script = ExtResource("1_rxhto")
+
+[node name="UI" type="CanvasLayer" parent="FishingGame"]
+
+[node name="PowerMeter" type="ProgressBar" parent="FishingGame/UI"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.797
+anchor_right = 0.5
+anchor_bottom = 0.851
+offset_left = -408.0
+offset_top = 10.16
+offset_right = 392.0
+offset_bottom = 20.16
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="FishCounter" type="Label" parent="FishingGame/UI"]
+anchors_preset = -1
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.2
+offset_left = 500.0
+offset_right = -500.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FishButton" type="TextureButton" parent="FishingGame/UI"]
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = 32.0
+offset_right = -126048.0
+offset_bottom = 696.0
+scale = Vector2(0.15, 0.15)
+texture_normal = ExtResource("2_4s0h7")
+texture_pressed = ExtResource("2_4s0h7")
+texture_hover = ExtResource("2_4s0h7")
+
+[node name="FeedbackLabel" type="Label" parent="FishingGame/UI"]
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.3
+anchor_right = 0.6
+anchor_bottom = 0.3
+offset_top = -30.0
+offset_bottom = 20.0
+theme_override_fonts/font = SubResource("FontFile_gphwd")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnergyLabel" type="Label" parent="FishingGame/UI"]
+anchors_preset = -1
+anchor_left = 0.91
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.1
+offset_left = -367.0
+offset_top = 8.0
+offset_bottom = 75.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 48
+text = "Energy: 9 / 10"
+
+[node name="EnergyTimerLabel" type="Label" parent="FishingGame/UI"]
+anchors_preset = -1
+anchor_left = -0.2
+anchor_top = 0.09
+anchor_right = -0.09
+anchor_bottom = 0.1
+offset_left = 955.0
+offset_top = 83.0
+offset_right = 1220.0
+offset_bottom = 132.0
+theme_override_font_sizes/font_size = 24
+text = "Next Energy In: 60s"
+horizontal_alignment = 2
+
+[node name="EnergyRegenTimer" type="Timer" parent="FishingGame"]
+wait_time = 60.0
+autostart = true
+
+[node name="CountdownTimer" type="Timer" parent="FishingGame"]
+autostart = true
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 110.0
+offset_bottom = 80.0
+text = "Back"

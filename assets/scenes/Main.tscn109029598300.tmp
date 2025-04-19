@@ -1,11 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddl368sfmifvu"]
+[gd_scene load_steps=5 format=3 uid="uid://ddl368sfmifvu"]
 
 [ext_resource type="Script" uid="uid://dsmxsvsaco7xy" path="res://assets/scenes/Main.gd" id="1_npkpr"]
 [ext_resource type="Texture2D" uid="uid://dj6ibikvkaorf" path="res://assets/art/placeholders/istockphoto-1289241322-612x612.jpg" id="2_xt100"]
 [ext_resource type="Texture2D" uid="uid://bo8omeirysftt" path="res://assets/art/placeholders/Untitled_design-removebg-preview (2).png" id="4_eruk6"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eruk6"]
+radius = 68.0
+height = 372.0
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_npkpr")
+penguin_type = null
+panel_description = null
 
 [node name="WorldLayer" type="Node2D" parent="."]
 
@@ -29,12 +35,17 @@ position = Vector2(648, 616)
 [node name="SpawnPoint3" type="Marker2D" parent="WorldLayer/PlotSpawns"]
 position = Vector2(1016, 416)
 
-[node name="PondButton" type="TextureButton" parent="WorldLayer"]
-offset_left = 808.0
-offset_top = -160.0
-offset_right = 1308.0
-offset_bottom = 340.0
-texture_normal = ExtResource("4_eruk6")
+[node name="PondArea2D" type="Area2D" parent="WorldLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="WorldLayer/PondArea2D"]
+position = Vector2(1050, 140)
+texture = ExtResource("4_eruk6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLayer/PondArea2D"]
+visible = false
+position = Vector2(1050, 140)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_eruk6")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

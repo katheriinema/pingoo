@@ -1,49 +1,82 @@
 # res://assets/scripts/PlotPanel.gd
 extends Panel
 
+@onready var name_input  = $NameInput
 @onready var plot_image  = $PlotImage
-@onready var description = $VBoxContainer/Description
-@onready var action_btn  = $VBoxContainer/ActionButton
+@onready var description = $Description
+@onready var action_btn  = $ActionButton
+@onready var skill_icon  = $SkillIcon
 
 var current_plot
 
+func _ready():
+	# Hook Enter on the LineEdit
+	name_input.connect("text_submitted", Callable(self, "_on_name_submitted"))
+	hide()
+
 func show_for_plot(plot):
 	current_plot = plot
-	# Always show whatever the Plot hands us (egg or penguin)
 	plot_image.texture = plot.get_display_texture()
 
-	# Prepare callables
-	var feed_cb = Callable(self, "_on_feed")
-	var sell_cb = Callable(self, "_on_sell")
+	# Set description text
+	if plot.is_egg():
+		description.text = plot.get_description()
+	else:
+		description.text = plot.get_panel_description()
 
-	# Clear old connections
-	if action_btn.is_connected("pressed", feed_cb):
-		action_btn.disconnect("pressed", feed_cb)
-	if action_btn.is_connected("pressed", sell_cb):
-		action_btn.disconnect("pressed", sell_cb)
+	# Clear old handlers
+	for cb in [Callable(self, "_on_feed"), Callable(self, "_on_sell")]:
+		if action_btn.is_connected("pressed", cb):
+			action_btn.disconnect("pressed", cb)
 
 	if plot.is_egg():
-		# While it’s still an egg, show fish‑progress and feed button
-		description.text = plot.get_description()  # "Fish fed: X / 3"
-		action_btn.text = "Feed me"
+		# ─── EGG PHASE ───
+		name_input.visible  = false
+		action_btn.visible  = true
+		action_btn.text     = "Feed me"
 		action_btn.disabled = false
-		action_btn.connect("pressed", feed_cb)
+		action_btn.connect("pressed", Callable(self, "_on_feed"))
+		skill_icon.visible  = false
+
 	else:
-		# Once hatched, get_description() will say "Griller Penguin – Ready to Sell"
-		description.text = plot.get_description()
-		action_btn.text = "Sell"
-		action_btn.disabled = false
-		action_btn.connect("pressed", sell_cb)
+		# ─── HATCHED PHASE ───
+		name_input.visible           = true
+		name_input.text              = plot.penguin_name
+		name_input.placeholder_text  = "Enter name for your %s penguin" % plot.penguin_type
+		name_input.grab_focus()
+
+		action_btn.visible  = true
+		action_btn.text     = "Sell"
+
+		# Show skill icon
+		var icon_path = "%s%s.png" % [plot.icon_folder, plot.penguin_type]
+		if ResourceLoader.exists(icon_path):
+			skill_icon.texture = load(icon_path)
+			skill_icon.visible = true
+		else:
+			skill_icon.visible = false
+
+		# Disable Sell if only one penguin remains
+		var remaining = get_tree().get_nodes_in_group("plots").size()
+		action_btn.disabled = remaining <= 1
+		if not action_btn.disabled:
+			action_btn.connect("pressed", Callable(self, "_on_sell"))
+
 	show()
 
 func _on_feed():
 	if GameState.spend_fish():
 		current_plot.feed()
-		# refresh the panel (progress text and possibly switch to Sell)
 		show_for_plot(current_plot)
 	else:
 		action_btn.disabled = true
 		description.text += "\n(Out of fish!)"
+
+func _on_name_submitted(text:String):
+	var cleaned = text.strip_edges()
+	if cleaned != "":
+		current_plot.set_penguin_name(cleaned)
+		show_for_plot(current_plot)
 
 func _on_sell():
 	current_plot.sell()

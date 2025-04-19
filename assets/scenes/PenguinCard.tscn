@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmoj3jca7lrq3"]
+
+[ext_resource type="Texture2D" uid="uid://ntafgyn84ekx" path="res://assets/art/placeholders/penguin.png" id="1_l3flk"]
+[ext_resource type="FontFile" path="res://assets/art/Sniglet-Regular.ttf" id="2_qomv7"]
+
+[node name="PenguinCard" type="VBoxContainer"]
+custom_minimum_size = Vector2(200, 300)
+offset_right = 200.0
+offset_bottom = 334.0
+scale = Vector2(0.252894, 0.224)
+
+[node name="PenguinImage" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_l3flk")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="PenguinName" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qomv7")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1

@@ -1,0 +1,100 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch220igetl3l4"]
+
+[ext_resource type="Script" uid="uid://jvb3ptapnvcr" path="res://assets/scenes/egg_shop.gd" id="1_u7tvb"]
+[ext_resource type="Texture2D" uid="uid://bepho4g61xivc" path="res://assets/art/placeholders/Untitled_design-removebg-preview.png" id="2_y22a4"]
+
+[node name="EggShop" type="Node2D"]
+script = ExtResource("1_u7tvb")
+
+[node name="EggContainer" type="HBoxContainer" parent="."]
+offset_top = 536.0
+offset_right = 1279.0
+offset_bottom = 722.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 350
+alignment = 1
+
+[node name="EggCommon" type="VBoxContainer" parent="EggContainer"]
+layout_mode = 2
+
+[node name="CommonEgg" type="Sprite2D" parent="EggContainer/EggCommon"]
+position = Vector2(27, -175)
+texture = ExtResource("2_y22a4")
+
+[node name="PriceLabel" type="Label" parent="EggContainer/EggCommon"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "$10"
+horizontal_alignment = 1
+
+[node name="BuyButtonCommon" type="Button" parent="EggContainer/EggCommon"]
+layout_mode = 2
+text = "Buy"
+
+[node name="EggRare" type="VBoxContainer" parent="EggContainer"]
+layout_mode = 2
+
+[node name="RareEgg" type="Sprite2D" parent="EggContainer/EggRare"]
+position = Vector2(27, -175)
+texture = ExtResource("2_y22a4")
+
+[node name="PriceLabel" type="Label" parent="EggContainer/EggRare"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "$50"
+horizontal_alignment = 1
+
+[node name="BuyButtonRare" type="Button" parent="EggContainer/EggRare"]
+layout_mode = 2
+text = "Buy"
+
+[node name="EggEpic" type="VBoxContainer" parent="EggContainer"]
+layout_mode = 2
+
+[node name="EpicEgg" type="Sprite2D" parent="EggContainer/EggEpic"]
+position = Vector2(36, -175)
+texture = ExtResource("2_y22a4")
+
+[node name="PriceLabel" type="Label" parent="EggContainer/EggEpic"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "$200"
+horizontal_alignment = 1
+
+[node name="BuyButtonEpic" type="Button" parent="EggContainer/EggEpic"]
+layout_mode = 2
+text = "Buy"
+
+[node name="MoneyLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1045.0
+offset_top = 21.0
+offset_right = 1259.0
+offset_bottom = 94.0
+grow_horizontal = 0
+horizontal_alignment = 2
+
+[node name="ConfirmationPopup" type="ConfirmationDialog" parent="."]
+
+[node name="SuccessLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 463.0
+offset_top = 1.0
+offset_right = 807.0
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="EggContainer/EggCommon/BuyButtonCommon" to="." method="_on_buy_button_common_pressed"]
+[connection signal="pressed" from="EggContainer/EggRare/BuyButtonRare" to="." method="_on_buy_button_rare_pressed"]
+[connection signal="pressed" from="EggContainer/EggEpic/BuyButtonEpic" to="." method="_on_buy_button_epic_pressed"]
+[connection signal="confirmed" from="ConfirmationPopup" to="." method="_on_confirmation_popup_confirmed"]

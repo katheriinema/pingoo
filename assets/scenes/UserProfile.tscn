@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2vcp2b2m8vw4"]
+
+[ext_resource type="Texture2D" uid="uid://ntafgyn84ekx" path="res://assets/art/placeholders/penguin.png" id="1_bgklu"]
+[ext_resource type="Script" uid="uid://pexv4vlbnu4b" path="res://assets/scenes/user_profile.gd" id="1_ywsak"]
+[ext_resource type="PackedScene" uid="uid://dmoj3jca7lrq3" path="res://assets/scenes/PenguinCard.tscn" id="2_ttceo"]
+[ext_resource type="FontFile" path="res://assets/art/Sniglet-Regular.ttf" id="4_5b6e3"]
+[ext_resource type="Texture2D" uid="uid://b4qxj5lb1snrw" path="res://assets/art/placeholders/igloo_home.png" id="4_oioyv"]
+[ext_resource type="FontFile" path="res://assets/art/Sniglet-ExtraBold.ttf" id="4_rbiho"]
+
+[node name="UserProfile" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ywsak")
+penguin_card_scene = ExtResource("2_ttceo")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1536.0
+offset_bottom = 1024.0
+scale = Vector2(0.833375, 0.705711)
+texture = ExtResource("4_oioyv")
+stretch_mode = 5
+
+[node name="LeftPanel" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_right = 408.0
+offset_bottom = 720.0
+
+[node name="Username" type="Label" parent="LeftPanel"]
+layout_mode = 2
+offset_left = 47.0
+offset_top = 40.0
+offset_right = 454.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("4_rbiho")
+theme_override_font_sizes/font_size = 52
+text = "Username"
+
+[node name="UserPenguinImage" type="TextureRect" parent="LeftPanel"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+offset_left = 38.0
+offset_top = 64.0
+offset_right = 446.0
+offset_bottom = 676.0
+scale = Vector2(0.675042, 0.642829)
+texture = ExtResource("1_bgklu")
+stretch_mode = 5
+
+[node name="DateStarted" type="Label" parent="LeftPanel"]
+layout_mode = 2
+offset_left = 40.0
+offset_top = 451.0
+offset_right = 448.0
+offset_bottom = 474.0
+theme_override_fonts/font = ExtResource("4_5b6e3")
+theme_override_font_sizes/font_size = 24
+text = "Date Started: 2025-04-17"
+
+[node name="OwnedPenguins" type="Label" parent="LeftPanel"]
+layout_mode = 2
+offset_left = 40.0
+offset_top = 534.0
+offset_right = 448.0
+offset_bottom = 557.0
+theme_override_fonts/font = ExtResource("4_5b6e3")
+theme_override_font_sizes/font_size = 24
+text = "Owned Penguins: 12"
+
+[node name="TotalRevenue" type="Label" parent="LeftPanel"]
+layout_mode = 2
+offset_left = 40.0
+offset_top = 617.0
+offset_right = 448.0
+offset_bottom = 640.0
+theme_override_fonts/font = ExtResource("4_5b6e3")
+theme_override_font_sizes/font_size = 24
+text = "Total Revenue: $1,240"
+
+[node name="RightPanel" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_right = 147.0
+offset_bottom = 40.0
+
+[node name="PenguinScroll" type="ScrollContainer" parent="RightPanel"]
+layout_mode = 2
+offset_left = 448.0
+offset_top = 139.0
+offset_right = 1280.0
+offset_bottom = 694.0
+horizontal_scroll_mode = 0
+
+[node name="PenguinGrid" type="GridContainer" parent="RightPanel/PenguinScroll"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 4
